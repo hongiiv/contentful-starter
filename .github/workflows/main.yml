@@ -3,13 +3,27 @@ name: Gatsby Publish
 on:
   push:
     branches:
-      - main
+      - master
 
+name: build gatsby
 jobs:
-  build:
+  build_gatsby:
+    name: build
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v1
-      - uses: hongiiv/contentful-starter@master
-        with:
-          access-token: ${{ secrets.ACCESS_TOKEN }}
+
+      - name: yarn install
+        run: yarn install
+
+      - name: gatsby build
+        env:
+          GH_API_KEY: ${{ secrets.ACCESS_TOKEN }}
+        run: yarn build
+
+      - name: deploy
+        uses: hongiiv/contentful-starter@v0.2.1
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          GH_PAT: ${{ secrets.ACCESS_TOKEN }}
+          BUILD_DIR: 'public/'
