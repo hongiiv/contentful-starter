@@ -10,6 +10,6 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v1
-      - uses: hongiiv/contentful-starter@v2
+      - uses: hongiiv/contentful-starter@master
         with:
           access-token: ${{ secrets.ACCESS_TOKEN }}
