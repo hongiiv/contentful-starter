@@ -5,7 +5,7 @@ on:
     branches:
       - master
 
-name: build gatsby
+name: build gatsby2
 jobs:
   build_gatsby:
     name: build
