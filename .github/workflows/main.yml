@@ -3,8 +3,8 @@ on:
   push:
     branches:
       - main
-    repository_dispatch:
-      types: [contentful.deploy]
+  repository_dispatch:
+    types: [contentful.deploy]
 
 jobs:
   build:
