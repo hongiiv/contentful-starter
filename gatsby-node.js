@@ -1,6 +1,10 @@
 const Promise = require('bluebird')
 const path = require('path')
 
+require('dotenv').config({
+  path: `.env.${process.env.NODE_ENV}`,
+});
+
 exports.createPages = ({ graphql, actions }) => {
   const { createPage } = actions
 
